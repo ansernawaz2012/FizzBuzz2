@@ -100,8 +100,20 @@ namespace FizzBuzz2
         public void createPlayers()
         {
             Console.Write("Enter the number of players: ");
-            int numberOfPlayers = Convert.ToInt16(Console.ReadLine());
 
+
+
+            // int numberOfPlayers = Convert.ToInt16(Console.ReadLine());
+            int numberOfPlayers;
+            string input = Console.ReadLine();
+
+            while (!Int32.TryParse(input, out numberOfPlayers))
+                   
+            {
+                Console.WriteLine("Invalid input. Please enter a number");
+                input = Console.ReadLine();
+            }
+            
             
 
             for (int i = 0; i < numberOfPlayers; i++)
