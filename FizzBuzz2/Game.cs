@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Speech.Synthesis;
 
 namespace FizzBuzz2
 {
@@ -28,7 +29,8 @@ namespace FizzBuzz2
 
             countTotal = getCountLimit();
 
-            
+            SpeechSynthesizer synth = new SpeechSynthesizer();
+            synth.Speak($"Hello {PlayerList[0].playerName} and {PlayerList[1].playerName}, welcome to the fizz buzz game");
 
             Console.WriteLine($"There are {PlayerList.Count} players. {PlayerList[0].playerName} and {PlayerList[1].playerName}");
             Console.WriteLine($"The game will end at the number {countTotal}");
@@ -93,8 +95,24 @@ namespace FizzBuzz2
 
         private int getCountLimit()
         {
-            Console.WriteLine("Please enter the total to count up to: ");
-            return Convert.ToInt16(Console.ReadLine());
+            int gameCountLimit;
+
+            Console.Write("Please enter the total to count up to: ");
+
+            string input = Console.ReadLine();
+
+            while (!Int32.TryParse(input, out gameCountLimit))
+
+            {
+                Console.Write
+                    ("Invalid input. Please enter a number: ");
+                input = Console.ReadLine();
+            }
+
+            return gameCountLimit;
+
+           // Console.WriteLine("Please enter the total to count up to: ");
+            //return Convert.ToInt16(Console.ReadLine());
                 }
 
         public void createPlayers()
@@ -121,7 +139,6 @@ namespace FizzBuzz2
                 PlayerList.Add(new Player());
             }
 
-            //return PlayerList;
         }
     }
 }
