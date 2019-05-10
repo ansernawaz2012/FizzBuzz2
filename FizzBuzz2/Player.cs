@@ -12,8 +12,18 @@ namespace FizzBuzz2
         public int playerScore = 0;
         public Player()
         {
-            Console.Write("Please enter your name: ");
-            playerName = Console.ReadLine();
+           
+            //loop until name is entered
+            while (true)
+            {
+                Console.WriteLine("Please enter your name:");
+                playerName = Console.ReadLine();
+
+                if (string.IsNullOrWhiteSpace(playerName)) 
+                    Console.WriteLine("Your entry was blank");
+                else break;
+            }
+
         }
     }
 }

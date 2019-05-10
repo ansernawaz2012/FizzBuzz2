@@ -30,9 +30,17 @@ namespace FizzBuzz2
             countTotal = getCountLimit();
 
             SpeechSynthesizer synth = new SpeechSynthesizer();
-            synth.Speak($"Hello {PlayerList[0].playerName} and {PlayerList[1].playerName}, welcome to the fizz buzz game");
+            synth.Speak($"Hello and welcome to the fizz buzz game. The players we have are");
 
-            Console.WriteLine($"There are {PlayerList.Count} players. {PlayerList[0].playerName} and {PlayerList[1].playerName}");
+            Console.WriteLine($"We have {PlayerList.Count} players. Their names are:");
+            for (int i = 0; i < PlayerList.Count; i++)
+            {
+      
+                Console.Write($"{PlayerList[i].playerName} ");
+                synth.Speak($"{PlayerList[i].playerName}");
+
+            }
+
             Console.WriteLine($"The game will end at the number {countTotal}");
 
             for (int i = 1; i <= countTotal; i++)
@@ -93,6 +101,7 @@ namespace FizzBuzz2
             }
         }
 
+        //function to allow user to specify at which value the game will end
         private int getCountLimit()
         {
             int gameCountLimit;
@@ -111,17 +120,17 @@ namespace FizzBuzz2
 
             return gameCountLimit;
 
-           // Console.WriteLine("Please enter the total to count up to: ");
-            //return Convert.ToInt16(Console.ReadLine());
+           
                 }
 
+
+        //function to create player objects and add to list
         public void createPlayers()
         {
             Console.Write("Enter the number of players: ");
 
 
-
-            // int numberOfPlayers = Convert.ToInt16(Console.ReadLine());
+            
             int numberOfPlayers;
             string input = Console.ReadLine();
 
