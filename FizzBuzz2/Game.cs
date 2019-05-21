@@ -16,6 +16,7 @@ namespace FizzBuzz2
         List<Player> PlayerList = new List<Player>();
         public int currentPlayerIndex = 0;
 
+        //constructor that starts the game
         public Game()
         {
            
@@ -24,9 +25,10 @@ namespace FizzBuzz2
 
         public void playGame()
         {
-
+            
             createPlayers();
 
+            
             countTotal = getCountLimit();
 
             SpeechSynthesizer synth = new SpeechSynthesizer();
@@ -43,6 +45,7 @@ namespace FizzBuzz2
 
             Console.WriteLine($"The game will end at the number {countTotal}");
 
+            //Loop until end of game reached
             for (int i = 1; i <= countTotal; i++)
             {
                 Console.WriteLine("Choose F for Fizz, B for Buzz, A for Both and N for none.");
@@ -79,8 +82,7 @@ namespace FizzBuzz2
                 else
                 {
                     Console.WriteLine("Wrong!");
-                   // wrongAnswer = true;
-                   // break;
+                   
                 }
 
             }
@@ -134,6 +136,7 @@ namespace FizzBuzz2
             int numberOfPlayers;
             string input = Console.ReadLine();
 
+            //Loop until valid input entered
             while (!Int32.TryParse(input, out numberOfPlayers))
                    
             {
